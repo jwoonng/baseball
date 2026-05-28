@@ -31,10 +31,18 @@ TEST_F(BaseballFixture, ReturnSolvedResultIfMatchedNumber) {
 	EXPECT_EQ(0, result.balls);
 }
 
-TEST_F(BaseballFixture, ReturnSolvedResultIfBallNumber) {
+TEST_F(BaseballFixture, ReturnSolvedResultIfStrikeNumber) {
 	GuessResult result = game.guess("124");
 
 	EXPECT_FALSE(result.solved);
 	EXPECT_EQ(2, result.strikes);
 	EXPECT_EQ(0, result.balls);
+}
+
+TEST_F(BaseballFixture, ReturnSolvedResultIfBallNumber) {
+	GuessResult result = game.guess("321");
+
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(1, result.strikes);
+	EXPECT_EQ(2, result.balls);
 }

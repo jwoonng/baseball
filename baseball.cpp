@@ -21,12 +21,19 @@ public:
 		}
 		
 		int strikes = 0;
+		int ball = 0;
 		for (int i = 0; i < 3; i++) {
 			if (guessNumber[i] == question[i]) {
 				strikes++;
 			}
+			else {
+				char tmp = guessNumber[i];
+				if (question.find(tmp) != string::npos) {
+					ball++;
+				}
+			}
 		}
-		return { false, strikes, 0 };
+		return { false, strikes, ball };
 	}
 
 	void assertIllegalArgument(const std::string& guessNumber)
